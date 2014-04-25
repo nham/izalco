@@ -1,0 +1,99 @@
+[
+    {
+        "id": "group",
+        "name": "Group",
+        "type": "def",
+        "dependencies": [],
+        "content": "A **group** is a monoid with additive inverses."
+    },
+
+    {
+        "id": "abgroup",
+        "name": "Abelian Group",
+        "type": "def",
+        "dependencies": ["group"],
+        "content": "An **abelian group** is a group with a commutative group product."
+    },
+
+    {
+        "id": "field",
+        "name": "Field",
+        "type": "def",
+        "dependencies": ["abgroup"],
+        "content": "A **field** is an abelian group with another binary op, under which the nonzero elements form an abelian group, such that the second operation is distributive wrt to the first."
+
+    },
+
+    {
+        "id": "vs",
+        "name": "Vector Space",
+        "type": "def",
+        "dependencies": ["abgroup", "field"],
+        "content": "A **vector space** is an abelian group with another operation, scalar multiplication, such that blah blah blah holds."
+
+    },
+
+    {
+        "id": "basic_group_facts",
+        "name": "Basic Group Facts",
+        "dependencies": ["group"],
+        "content": "Identity is unique, inverses are unique. Each equation with one unknown has a unique solution."
+    },
+
+    {
+        "id": "basic_vs_facts",
+        "name": "Basic Vector Space Facts",
+        "dependencies": ["vs"],
+        "content": "Scaling by -1 gives the inverse vector. Scaling by zero gives the zero vector. Etc."
+    },
+
+    {
+        "id": "generalized_vector_sum",
+        "name": "Generalized Vector Sum",
+        "type": "def",
+        "dependencies": ["vs"],
+        "content": "Associativity implies that we can sum any finite tuple of vectors without caring about parentheses. Commutativity implies that we can sum any set of vectors without caring about which order we add."
+    },
+
+    {
+        "id": "scaling",
+        "name": "Scaling",
+        "type": "def",
+        "dependencies": ["vs"],
+        "content": "A **scaling** of a set of vectors is an assign of a field element to each vector."
+    },
+
+    {
+        "id": "linear_comb",
+        "name": "Linear Combination",
+        "type": "def",
+        "dependencies": ["scaling", "generalized_vector_sum"],
+        "content": "A **linear combination** is the sum of the scaled vectors resulting from some scaling."
+    },
+
+    {
+        "id": "independent_set",
+        "name": "Independent Set",
+        "type": "def",
+        "dependencies": ["vs", "linear_comb"],
+        "content": "A set S of vectors is **independent** if every vector in V has at most one scaling of S."
+    },
+
+    {
+        "id": "generating_set",
+        "name": "Generating Set",
+        "type": "def",
+        "dependencies": ["vs", "linear_comb"],
+        "content": "A set S of vectors is **generating** if every vector in V has at least one scaling of S."
+    },
+
+    {
+        "id": "basis",
+        "name": "Basis",
+        "type": "def",
+        "dependencies": ["independent_set", "generating_set"],
+        "content": "A set S of vectors is a **basis** if it is both independent and generating in V"
+    }
+]
+
+
