@@ -64,6 +64,14 @@
     },
 
     {
+        "id": "trivial_scaling",
+        "name": "Trivial scaling",
+        "type": "def",
+        "dependencies": ["scaling"],
+        "content": "The **trivial scaling** of a set of vectors is the assignment of all zeros to each vector."
+    },
+
+    {
         "id": "linear_comb",
         "name": "Linear Combination",
         "type": "def",
@@ -79,6 +87,30 @@
         "content": "A set S of vectors is **independent** if every vector in V has at most one scaling of S."
     },
 
+
+    {
+        "id": "dependent_set",
+        "name": "Dependent Set",
+        "type": "def",
+        "dependencies": ["independent_set"],
+        "content": "A set S of vectors is **dependent** if it is not independent."
+    },
+
+    {
+        "id": "equiv_independent",
+        "name": "Equivalent condition for independent sets",
+        "dependencies": ["independent_set", "trivial_scaling"],
+        "content": "A set is independent iff the only scaling that combines to zero is the trivial scaling"
+    },
+
+    {
+        "id": "equiv_dependent",
+        "name": "Equivalent condition for dependent sets",
+        "dependencies": ["dependent_set", "equiv_independent"],
+        "content": "A set is dependent iff one vector is in the span of the others."
+    },
+
+
     {
         "id": "generating_set",
         "name": "Generating Set",
@@ -88,12 +120,90 @@
     },
 
     {
+        "id": "subsets_independent_supersets_generating",
+        "name": "Subsets of independent sets, supersets of generating sets",
+        "dependencies": ["independent_set", "generating_set"],
+        "content": "Every subset of an independent set is independent. Every superset of a generating set is generating."
+    },
+
+    {
         "id": "basis",
         "name": "Basis",
         "type": "def",
         "dependencies": ["independent_set", "generating_set"],
         "content": "A set S of vectors is a **basis** if it is both independent and generating in V"
+    },
+
+    {
+        "id": "basis_criteria",
+        "name": "Basis criteria",
+        "dependencies": ["basis"],
+        "content": "A set S of vectors is a **basis** iff it is a minimal generating set iff it is a maximal independent set."
+    },
+
+    {
+        "id": "narrowing_generating_sets_to_bases",
+        "name": "Narrowing a finite generating set to a basis",
+        "dependencies": ["basis"],
+        "content": "Any finite generating set for a vector space contains a basis"
+    },
+
+    {
+        "id": "growing_independent_sets_to_bases",
+        "name": "Expanding an independent set to a basis",
+        "dependencies": ["basis"],
+        "content": "Any independent set for a vector space can be expanded to a basis."
+    },
+
+    {
+        "id": "subspace",
+        "name": "Subspace",
+        "type": "def",
+        "dependencies": ["vs"],
+        "content": "A **subspace** is a subset S of a vector space that forms a vector space under the restriction of the vector space operations to S"
+    },
+
+    {
+        "id": "subspace_criteria",
+        "name": "Subspace criterion",
+        "dependencies": ["subspace", "linear_comb"],
+        "content": "A subset S is a subspace iff it is closed under linear combinations. Proof: blahblhbalh"
+    },
+
+    {
+        "id": "intersection_of_subspaces",
+        "name": "Intersection of subspaces is a subspace",
+        "dependencies": ["subspace_criteria"],
+        "content": "The intersection of any collection of subspaces is a subspace."
+    },
+
+    {
+        "id": "span",
+        "name": "Span",
+        "type": "def",
+        "dependencies": ["intersection_of_subspaces"],
+        "content": "The **span** of  subset of V is the intersection of all subspaces that contain S. In other words, it is the smallest subspace containing S."
+    },
+
+    {
+        "id": "equiv_span",
+        "name": "Equivalent characterization of span",
+        "type": "def",
+        "dependencies": ["span"],
+        "content": "The span of a set S is exactly the set of all linear combinations of vectors of S."
+    },
+
+    {
+        "id": "removing_dependent_vecs_doesnt_change_span",
+        "name": "Removing dependent vectors doesn't change the span",
+        "dependencies": ["equiv_dependent", "span"],
+        "content": "If S is dependent and one v in S is in the span of the others, then span S = span S - v"
+    },
+
+    {
+        "id": "steinitz_exchange_lemma",
+        "name": "Steinitz exchange lemma",
+        "dependencies": ["independent_set", "generating_set", "equiv_dependent", "removing_dependent_vecs_doesnt_change_span"],
+        "content": "If S is independent and G finite generating for V, then S has no more elements than G."
     }
 ]
-
-
