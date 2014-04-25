@@ -46,3 +46,8 @@ g.type-def > rect {
 text {
     cursor: default;
 }
+
+.nodetext {
+    max-width: 220px;
+    padding: 7px;
+}

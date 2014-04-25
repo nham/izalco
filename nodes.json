@@ -188,7 +188,6 @@
     {
         "id": "equiv_span",
         "name": "Equivalent characterization of span",
-        "type": "def",
         "dependencies": ["span"],
         "content": "The span of a set S is exactly the set of all linear combinations of vectors of S."
     },
@@ -203,7 +202,22 @@
     {
         "id": "steinitz_exchange_lemma",
         "name": "Steinitz exchange lemma",
-        "dependencies": ["independent_set", "generating_set", "equiv_dependent", "removing_dependent_vecs_doesnt_change_span"],
+        "dependencies": ["independent_set", "generating_set", "equiv_dependent", "removing_dependent_vecs_doesnt_change_span", "subsets_independent_supersets_generating"],
         "content": "If S is independent and G finite generating for V, then S has no more elements than G."
+    },
+
+    {
+        "id": "fingen_every_basis_same_number",
+        "name": "Every basis in a finitely generated vector space has the same size.",
+        "dependencies": ["steinitz_exchange_lemma"],
+        "content": "If V is finitely generated, it has a finite basis. By Steinitz exchange lemma, all other finite bases have the same number of elements. There can't be any infinite bases, since we could get independent sets of arbitrarily large finite size, contradicting the Steinitz exchange lemma."
+    },
+
+    {
+        "id": "dimension",
+        "name": "Dimension",
+        "type": "def",
+        "dependencies": ["fingen_every_basis_same_number"],
+        "content": "The size of any basis in a finitely generated vector space is called its **dimension**. Such vector spaces are called **finite-dimensional vector spaces**."
     }
 ]

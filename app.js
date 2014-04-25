@@ -41,7 +41,7 @@ $.getJSON("nodes.json", function(data) {
         }
 
         console.log("id = "+node['id']+", label = "+label+", nodeclass = "+nodeclass);
-        g.addNode(node['id'],    { label: label, nodeclass: nodeclass});
+        g.addNode(node['id'],    { label: "<div class='nodetext'>"+label+"</div>", nodeclass: nodeclass });
 
         $.each(node['dependencies'], function(i, dep) {
         console.log("  dep = "+dep+", id = "+node['id']);
