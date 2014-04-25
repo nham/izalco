@@ -26,10 +26,18 @@ svg {
     width: 100%;
 }
 
+
 .node rect {
-    stroke: #333;
     stroke-width: 1.5px;
     fill: #fff;
+}
+
+.node:not(.selected) rect {
+    stroke: #333;
+}
+
+.node.selected rect {
+    stroke: #ff0000;
 }
 
 .edgePath {
@@ -43,11 +51,8 @@ g.type-def > rect {
 
 }
 
-text {
-    cursor: default;
-}
-
 .nodetext {
     max-width: 220px;
     padding: 7px;
+    cursor: default;
 }

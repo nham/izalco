@@ -1,3 +1,4 @@
+
 // Create a new directed graph
 var g = new dagreD3.Digraph();
 
@@ -28,6 +29,7 @@ d3.select("svg")
   }));
 
 
+
 // fetch all data
 $.getJSON("nodes.json", function(data) {
     $.each(data, function(i, node) {
@@ -40,19 +42,21 @@ $.getJSON("nodes.json", function(data) {
             nodeclass += "prop";
         }
 
-        console.log("id = "+node['id']+", label = "+label+", nodeclass = "+nodeclass);
         g.addNode(node['id'],    { label: "<div class='nodetext'>"+label+"</div>", nodeclass: nodeclass });
 
         $.each(node['dependencies'], function(i, dep) {
-        console.log("  dep = "+dep+", id = "+node['id']);
             g.addEdge(null, dep, node['id']);
         });
     });
 })
-  .fail(function(e) {
-    console.log("FAIL");
-    console.log(e);
+  .fail(function() {
+    console.log("fetching JSON failed");
   })
   .done(function() {
     renderer.run(g, d3.select("svg g"));
+
+    $(".node").on("click", function() {
+        d3.selectAll(".node").classed("selected", false);
+        d3.select(this).classed("selected", true);
+    });
   });
