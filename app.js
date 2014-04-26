@@ -1,3 +1,4 @@
+var nodes = {};
 
 // Create a new directed graph
 var g = new dagreD3.Digraph();
@@ -31,27 +32,39 @@ d3.select("svg")
 
 
 // fetch all data
-$.getJSON("nodes.json", function(data) {
-    $.each(data, function(i, node) {
-        var label = node['name'];
-        var nodeclass = "type-";
-        if (node['type'] === "def") {
-            label = "Def: " + label;
-            nodeclass += "def";
-        } else {
-            nodeclass += "prop";
-        }
+function importNode(i, node) {
+    var id = node['id'];
+    // assumes id's are unique
+    nodes[id] = node;
 
-        g.addNode(node['id'],    { label: "<div class='nodetext'>"+label+"</div>", nodeclass: nodeclass });
+    var label = node['name'];
+    var nodeclass = "type-";
+    if (node['type'] === "def") {
+        label = "Def: " + label;
+        nodeclass += "def";
+    } else {
+        nodeclass += "prop";
+    }
 
-        $.each(node['dependencies'], function(i, dep) {
-            g.addEdge(null, dep, node['id']);
-        });
+    var x = g.addNode(id, { label: "<div class='nodetext'>"+label+"</div>", nodeclass: nodeclass });
+
+
+    console.log(x);
+    $.each(node['dependencies'], function(i, dep) {
+        g.addEdge(null, dep, node['id']);
     });
+
+    //nodes[id]['el'] = null; // TODO
+}
+
+
+$.getJSON("nodes.json", function(data) {
+    $.each(data, importNode);
 })
   .fail(function() {
     console.log("fetching JSON failed");
   })
+
   .done(function() {
     renderer.run(g, d3.select("svg g"));
 

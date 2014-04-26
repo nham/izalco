@@ -4,26 +4,30 @@ body, html {
 }
 
 #container {
-    width: 100%;
+    width: 900px;
     margin: 0 auto;
 }
 
 #content {
     background: #ddd;
-    width: 50%;
-    float: left;
+    width: 100%;
+}
+
+#content p {
+    margin: 5px;
 }
 
 
 #viz {
-    float: right;
-    width: 50%;
+    margin-top: 10px;
+    width: 100%;
     background: #9c9;
 }
 
 
 svg {
     width: 100%;
+    height: 400px;
 }
 
 
@@ -55,4 +59,5 @@ g.type-def > rect {
     max-width: 220px;
     padding: 7px;
     cursor: default;
+    font-size: 12px;
 }
